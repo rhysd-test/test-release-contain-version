@@ -18,4 +18,5 @@ for bin in *; do
     mv "$bin" "$cmd"
     tar cf "${bin}.tar" "$cmd"
     xz "${bin}.tar"
+    rm "$cmd"
 done
