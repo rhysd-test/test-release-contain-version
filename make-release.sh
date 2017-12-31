@@ -16,7 +16,6 @@ for bin in *; do
         cmd="$name"
     fi
     mv "$bin" "$cmd"
-    tar cf "${bin}.tar" "$cmd"
-    xz "${bin}.tar"
-    rm "$cmd"
+    xz "${cmd}"
+    mv "${cmd}.xz" "${bin}.xz"
 done
