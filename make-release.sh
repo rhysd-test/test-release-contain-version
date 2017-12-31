@@ -10,6 +10,12 @@ mkdir -p release
 mv ${name}_* release/
 cd release
 for bin in *; do
-    mv "$bin" "$name"
-    gzip "$name"
+    if [[ "${bin}" == *windows* ]]; then
+        cmd="${name}.exe"
+    else
+        cmd="$name"
+    fi
+    mv "$bin" "$cmd"
+    tar cf "${bin}.tar" "$cmd"
+    xz "${bin}.tar"
 done
